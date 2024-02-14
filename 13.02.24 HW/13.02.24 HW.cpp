@@ -7,19 +7,21 @@ class Point
     int x;
     int y;
 public:
-    Point(int x, int y)
+    Point(int x = 0, int y = 0)
     {
         this->x = x;
         this->y = y;
     }
-    Point()
-    {
-        x = 0;
-        y = 0;
-    }
-
+   
     int getX() { return x; }
     int getY() { return y; }
+
+    Point& operator+=(const Point& load)
+    {
+        x += load.x;
+        y += load.y;
+        return *this;
+    }
 
     Point& operator=(const int overload)
     {
@@ -98,16 +100,19 @@ int main()
     cout << "ar2 elements: ";
     ar2.randomize();
     ar2.print();
+    ar1.sum();
 
     DynArray<char> ar3{ 10 };
     cout << "ar3 elements: ";
     ar3.randomize();
     ar3.print();
+    ar1.sum();
 
     DynArray<Point> ar4{ 10 };
     ar4.randomize();
     cout << "ar4 elements:\n";
     ar4.print();
+    ar4.sum();
 
     return 0;
 }
